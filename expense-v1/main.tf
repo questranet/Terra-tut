@@ -77,4 +77,4 @@ resource "aws_route53_record" "mysql" {
   type    = "A"
   ttl     = 30
   records = [aws_instance.mysql.private_ip]
-}''
+}
