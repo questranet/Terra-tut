@@ -13,5 +13,5 @@ data "aws_route53_zone" "zone" {
 }
 
 variable "zone_id" {
-  dafault = "waleapagun.online"
+  default = "waleapagun.online"
 }
