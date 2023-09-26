@@ -6,6 +6,15 @@ resource "aws_instance" "frontend" {
   tags = {
     Name = "frontend"
   }
+
+  provisioner "local-exec" {
+    command = <<EOF
+cd /home/centos/infra-ansible pull
+git pull
+sleep 60
+ansible-playbook -i ${self.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=frontend
+EOF
+  }
 }
 
 resource "aws_route53_record" "frontend" {
@@ -24,6 +33,15 @@ resource "aws_instance" "backend" {
   tags = {
     Name = "backend"
   }
+
+  provisioner "local-exec" {
+    command = <<EOF
+cd /home/centos/infra-ansible pull
+git pull
+sleep 60
+ansible-playbook -i ${self.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=backend
+EOF
+  }
 }
 
 resource "aws_route53_record" "backend" {
@@ -41,6 +59,15 @@ resource "aws_instance" "mysql" {
 
   tags = {
     Name = "mysql"
+  }
+
+  provisioner "local-exec" {
+    command = <<EOF
+cd /home/centos/infra-ansible pull
+git pull
+sleep 60
+ansible-playbook -i ${self.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=mysql
+EOF
   }
 }
 
