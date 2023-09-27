@@ -4,5 +4,5 @@ module "test" {
 }
 
 variable "input" {
-  dafault = "Hello Universe"
+  default = "Hello Universe"
 }
