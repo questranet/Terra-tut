@@ -3,4 +3,6 @@ module "test" {
   input = var.input
 }
 
-variable "input" {}
+variable "input" {
+  dafault = "Hello Universe"
+}
