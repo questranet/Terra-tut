@@ -19,12 +19,12 @@ resource "aws_route53_record" "record" {
 resource "null_resource" "ansible" {
   depends_on = [aws_route53_record.record]
   provisioner "local-exec" {
-    command = <<EDF
+    command = <<EOF
 cd /root/infra-ansible
 git pull
 sleep 60
 ansible-playbook -i ${aws_instance.instance.private_ip}, -e ansible_user=centos -e ansible_password=DevOps321 main.yml -e role_name=${var.component}
-EDF
+EOF
   }
 }
 
