@@ -5,7 +5,7 @@ data "aws_ami" "ami" {
 }
 
 data "aws_security_group" "sg" {
-  name = "wale-apagun"
+  name = "allow-all"
 }
 
 data "aws_route53_zone" "zone" {
